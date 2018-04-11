@@ -1,0 +1,25 @@
+# Playbooks — Ansible Documentationw                                                                                                                                     
+# http://docs.ansible.com/ansible/latest/playbooks.html
+
+---
+# The playbook makes remote vps to install the squid and to
+# restart the squid service after uploading well-adjusted configuration to them
+
+- hosts:  squid
+  remote_user: root
+  tasks:
+  - name: install the latest squid
+    apt:
+      name: squid
+      update_cache: yes
+
+  - name: copy squid config directory to remote vps
+    copy:
+      src: ./squid
+      dest: /etc
+
+  - name: restart squid service
+    service:
+      name: squid
+      state: restarted
+

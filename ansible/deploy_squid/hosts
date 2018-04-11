@@ -1,0 +1,5 @@
+# Inventory — Ansible Documentation
+# http://docs.ansible.com/ansible/latest/intro_inventory.html
+
+[squid]
+squid_001 ansible_host=xxx.xxx.xxx.xxx ansible_python_interpreter=/usr/bin/python3

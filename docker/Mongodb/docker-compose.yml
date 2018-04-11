@@ -1,0 +1,14 @@
+version: "3"
+services:
+    mongo:
+        image: mongo:latest
+        container_name: dc-mongo
+        restart: always
+        tty: true
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: ******** 
+        ports:
+            - "27017:27017"
+        volumes:
+            - /data/mongodb:/data/db

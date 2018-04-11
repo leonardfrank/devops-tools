@@ -1,0 +1,14 @@
+version: "3"
+services:
+    influxdb:
+        image: influxdb
+        container_name: dc-influxdb
+        restart: always
+        tty: true
+        environment:
+            INFLUXDB_GRAPHITE_ENABLED: 1
+        ports:
+            - "2003:2003"
+            - "8086:8086"
+        volumes:
+            - /data/influxdb:/var/lib/influxdb

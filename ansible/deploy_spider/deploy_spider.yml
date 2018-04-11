@@ -1,0 +1,65 @@
+# Playbooks — Ansible Documentationw
+# http://docs.ansible.com/ansible/latest/playbooks.html
+
+---
+
+- hosts: spider
+  remote_user: root
+  tasks:
+  - name: cp requirements.txt to remote vps
+    copy:
+      src: ./requirements.txt
+      dest: /root/
+
+  - name: install libxml2-dev
+    apt:
+      name: libxml2-dev
+      update_cache: yes
+
+  - name: install libxslt1-dev
+    apt:
+      name: libxslt1-dev
+
+  - name: install libxslt1.1
+    apt:
+      name: libxslt1.1
+
+  - name: install libssl-dev
+    apt:
+      name: libssl-dev
+
+  - name: install libssl-doc
+    apt:
+      name: libssl-doc
+
+  - name: install libffi-dev
+    apt:
+      name: libffi-dev
+
+  - name: install build-essential
+    apt:
+      name: build-essential
+
+  - name: install python3-pip
+    apt:
+      name: python3-pip
+      update_cache: yes
+
+  - name: upgrade pip3
+    pip:
+      editable: false
+      executable: pip3
+      name: pip
+      extra_args: --upgrade
+
+  - name: upgrade setuptools
+    pip:
+      editable: false
+      executable: pip3
+      name: setuptools
+      extra_args: --upgrade
+
+  - name: install python libraries the project needs
+    pip:
+      executable: pip3
+      requirements: /root/requirements.txt
